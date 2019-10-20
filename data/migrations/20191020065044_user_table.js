@@ -39,6 +39,8 @@ exports.up = function(knex) {
         .inTable('interests')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
+
+      tbl.unique(['user_id', 'interest_id']);
     });
 };
 

@@ -27,6 +27,8 @@ exports.up = function(knex) {
         .inTable('create_message')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
+
+      user_messages.unique(['user_id', 'message_id']);
     });
 };
 
