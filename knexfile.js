@@ -4,14 +4,19 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: './database/expatJournalUser.db3'
+      filename: './data/expatJournalUser.db3'
     },
     useNullAsDefault: true,
+    // pool: {
+    //   afterCreate: (conn, done) => {
+    //     conn.run('PRAGMA foreign_keys = ON', done);
+    //   }
+    // },
     migrations: {
-      directory: './database/migrations'
+      directory: './data/migrations'
     },
     seeds: {
-      directory: './database/seeds'
+      directory: './data/seeds'
     }
   },
 
