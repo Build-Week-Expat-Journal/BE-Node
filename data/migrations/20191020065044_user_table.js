@@ -20,6 +20,7 @@ exports.up = function(knex) {
     })
     .createTable('user_interests', tbl => {
       tbl.increments();
+
       //create FK that references the PK in the users table
       tbl
         .integer('user_id')
