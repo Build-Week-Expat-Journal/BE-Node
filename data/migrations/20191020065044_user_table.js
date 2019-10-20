@@ -1,15 +1,14 @@
 exports.up = function(knex) {
-  //changes I want to make to my schema
   return knex.schema
     .createTable('users', tbl => {
       tbl.increments();
-      tbl.string('username', 255).notNullable();
+      tbl.string('email', 255).notNullable();
       tbl
-        .string('email', 255)
+        .string('username', 255)
         .unique()
         .notNullable();
       tbl.string('password', 255).notNullable();
-      tbl.string('confirm password', 255).notNullable();
+      tbl.string('confirm_password', 255).notNullable();
     })
     .createTable('interests', tbl => {
       tbl.increments();
@@ -20,27 +19,31 @@ exports.up = function(knex) {
       tbl.string('chess', 255);
     })
     .createTable('user_interests', tbl => {
-      //create a FK that references the PK on the users table
+      tbl.increments();
+      //create FK that references the PK in the users table
       tbl
         .integer('user_id')
-        .unsigned()
         .notNullable()
-        .reference('id')
-        .table('users')
+        .unsigned()
+        .references('id')
+        .inTable('users')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
 
       tbl
         .integer('interest_id')
-        .unsigned()
         .notNullable()
-        .reference('id')
-        .table('interests')
+        .unsigned()
+        .references('id')
+        .inTable('interests')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
     });
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTableIfExists('users');
+  return knex.schema
+    .dropTableIfExists('user_interests')
+    .dropTableIfExists('interests')
+    .dropTableIfExists('users');
 };
