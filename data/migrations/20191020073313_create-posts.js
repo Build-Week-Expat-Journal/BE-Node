@@ -1,21 +1,11 @@
 exports.up = function(knex) {
-  return knex.schema.createTable('user_posts', posts => {
+  return knex.schema.createTable('user_posts', function(posts) {
     posts.increments();
-    posts.string('posts', 255);
-    posts.text('story', 4000);
+
+    posts.string('title', 1024).notNullable();
+    posts.text('contents', 4000).notNullable();
+
     posts.timestamps(true, true);
-
-    // create a FK that references the users table
-    posts
-      .integer('user_id')
-      .notNullable()
-      .unsigned()
-      .references('id')
-      .inTable('users')
-      .onUpdate('CASCADE')
-      .onDelete('CASCADE');
-
-    posts.unique('user_id');
   });
 };
 
