@@ -6,7 +6,6 @@ module.exports = {
   insert,
   update,
   remove,
-  findUserPosts,
   findPostComments,
   findCommentById,
   insertComment
@@ -36,13 +35,6 @@ function remove(id) {
   return db('posts')
     .where('id', Number(id))
     .del();
-}
-
-function findUserPosts(userId) {
-  return db('posts as p')
-    .join('users as u', 'u.id', 'p.user_id')
-    .select('p.id', 'p.contents as story', 'u.username as said_by')
-    .where({ user_id: userId });
 }
 
 function findPostComments(postId) {

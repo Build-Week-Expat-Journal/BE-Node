@@ -6,6 +6,15 @@ exports.up = function(knex) {
     posts.text('contents', 4000).notNullable();
 
     posts.timestamps(true, true);
+
+    posts
+      .integer('user_id')
+      .notNullable()
+      .unsigned()
+      .references('id')
+      .inTable('users')
+      .onDelete('CASCADE')
+      .onUpdate('CASCADE');
   });
 };
 
