@@ -1,5 +1,5 @@
 exports.up = function(knex) {
-  return knex.schema.createTable('user_posts', function(posts) {
+  return knex.schema.createTable('posts', function(posts) {
     posts.increments();
 
     posts.string('title', 1024).notNullable();
@@ -10,5 +10,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTableIfExists('user_posts');
+  return knex.schema.dropTableIfExists('posts');
 };
