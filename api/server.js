@@ -20,7 +20,7 @@ server.get('/', (req, res) => {
     -------
     grabs user interests<br/>
     GET:
-    <h4>https://expat-journal-lambda1.herokuapp.com/api/interests</h4>
+    <h4>https://expat-journal-lambda1.herokuapp.com/api/users/interests</h4>
 
     -------
     grabs all posts created<br/>
