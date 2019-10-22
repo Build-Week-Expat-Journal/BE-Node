@@ -29,4 +29,16 @@ router.get('/:id/posts', (req, res) => {
     });
 });
 
+router.get('/interests', (req, res) => {
+  Users.findInterests('interests')
+    .then(interest => {
+      res.status(200).json(interest);
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: 'there was a problem getting user interests from the databases'
+      });
+    });
+});
+
 module.exports = router;

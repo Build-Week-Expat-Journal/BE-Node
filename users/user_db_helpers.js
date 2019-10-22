@@ -5,11 +5,23 @@ module.exports = {
   find,
   findBy,
   findById,
-  findUserPosts
+  findUserPosts,
+  findInterests
 };
 
 function find() {
   return db('users').select('id', 'username');
+}
+
+function findInterests() {
+  return db('interests').select(
+    'id',
+    'photography',
+    'networking',
+    'yoga',
+    'hiking',
+    'chess'
+  );
 }
 
 function findBy(filter) {
