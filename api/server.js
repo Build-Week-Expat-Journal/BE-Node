@@ -9,59 +9,59 @@ server.use('/api/users', usersRoutes);
 
 server.get('/', (req, res) => {
   res.send(
-    `<h3>https://expat-journal-lambda1.herokuapp.com/</h3>,
+    `<h3>https://expat-journal-lambda1.herokuapp.com/</h3>
 
     -------
-    grabs all the users
+    grabs all the users<br/>
     GET:
      <h4>
     https://expat-journal-lambda1.herokuapp.com/api/users</h4>
 
     -------
-    grabs user interests
+    grabs user interests<br/>
     GET:
     <h4>https://expat-journal-lambda1.herokuapp.com/api/interests</h4>
 
     -------
-    grabs all posts created
+    grabs all posts created<br/>
     GET:
     <h4>https://expat-journal-lambda1.herokuapp.com/api/posts</h4>
 
     -------
-    grabs all the posts created by a user with the id of that user
+    grabs all the posts created by a user with the id of that user<br/>
     GET:
     <h4>https://expat-journal-lambda1.herokuapp.com/api/users/:id/posts</h4>
 
     -------
 
-    grabs a specific post by id
+    grabs a specific post by id<br/>
     GET:
     <h4>https://expat-journal-lambda1.herokuapp.com/api/posts/:id</h4>
 
     -------
-    grabs all comments posted by a specific user with there id
+    grabs all comments posted by a specific user with there id<br/>
     GET:
     <h4>https://expat-journal-lambda1.herokuapp.com/api/posts/:id/comments</h4>
 
     -------
 
-    This adds a post to the database for the user_id you specify
+    This adds a post to the database for the user_id you specify<br/>
     POST:
     <h4>https://expat-journal-lambda1.herokuapp.com/api/posts</h4>
 
     -------
 
-    This adds a comment posted by a specific user with there id
+    This adds a comment posted by a specific user with there id<br/>
     POST:
     <h4>https://expat-journal-lambda1.herokuapp.com/api/posts/:id/comments</h4>
 
     -------
-    This updates a post for a user using the specific user_id
+    This updates a post for a user using the specific user_id<br/>
     PUT:
     <h4>https://expat-journal-lambda1.herokuapp.com/api/posts/:id</h4>
 
     -------
-    This deletes a post for a user, using the specific id
+    This deletes a post for a user, using the specific id<br/>
     DELETE:
     <h4>https://expat-journal-lambda1.herokuapp.com/api/posts/:id</h4>
 
