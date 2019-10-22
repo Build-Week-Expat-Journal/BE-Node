@@ -18,6 +18,13 @@ server.get('/', (req, res) => {
     https://expat-journal-lambda1.herokuapp.com/api/users</h4>
 
     -------
+
+    grabs one individual user by id<br/>
+    GET:
+    <h4>
+    https://expat-journal-lambda1.herokuapp.com/api/users/:id</h4>
+
+    -------
     grabs user interests<br/>
     GET:
     <h4>https://expat-journal-lambda1.herokuapp.com/api/users/interests</h4>
