@@ -24,7 +24,7 @@ exports.up = function(knex) {
         .notNullable()
         .unsigned()
         .references('id')
-        .inTable('create_message')
+        .inTable('created_messages')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
 
