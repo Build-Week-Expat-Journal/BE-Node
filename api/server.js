@@ -29,6 +29,21 @@ server.get('/', (req, res) => {
     https://expat-journal-lambda1.herokuapp.com/api/users/:id</h4>
 
     -------
+
+    Allows User to Register with Email, Username, Password and confirm_password<br/>
+    POST:
+    <h4>
+    https://expat-journal-lambda1.herokuapp.com/api/users/register</h4>
+
+    -------
+
+    Allows User to Login with Email and password<br/>
+    POST:
+    <h4>
+    https://expat-journal-lambda1.herokuapp.com/api/users/login</h4>
+
+    -------
+
     grabs user interests<br/>
     GET:
     <h4>https://expat-journal-lambda1.herokuapp.com/api/users/interests</h4>

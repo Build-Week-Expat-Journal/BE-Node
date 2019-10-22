@@ -32,8 +32,8 @@ function update(id, post) {
 }
 
 function remove(id) {
-  return db('posts')
-    .where('id', Number(id))
+  return db('users')
+    .where('id', id)
     .del();
 }
 
