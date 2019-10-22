@@ -1,0 +1,5 @@
+https://expat-journal-lambda1.herokuapp.com/api/users
+
+###
+
+https://expat-journal-lambda1.herokuapp.com/api/users/interests
