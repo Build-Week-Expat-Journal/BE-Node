@@ -1,8 +1,12 @@
 const express = require('express');
 const server = express();
+const cors = require('cors');
+const helmet = require('helmet');
 const postRoutes = require('../posts/postRouter.js'); //imports routes
 const usersRoutes = require('../users/userRouter.js'); //imports routes
 
+server.use(helmet());
+server.use(cors());
 server.use(express.json());
 server.use('/api/posts', postRoutes);
 server.use('/api/users', usersRoutes);
