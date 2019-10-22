@@ -4,6 +4,10 @@ const router = express.Router();
 
 const Posts = require('./post_db_helpers');
 
+const authMiddleware = require('../auth-middleware/authMiddleWare.js');
+
+const validatePost = require('../auth-middleware/validatePosts.js');
+
 //Returns an array of all the post objects contained in the database.
 //any url that begins  with /api/posts
 router.get('/', (req, res) => {
