@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const secrets = require('../config_secret/secrets.js');
 const router = express.Router();
-
+const authMiddleware = require('../auth-middleware/authMiddleWare');
 const Users = require('./user_db_helpers.js');
 
 router.get('/', (req, res) => {
@@ -107,20 +107,16 @@ router.post('/login', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const deleteId = req.params.id;
-  console.log(deleteId);
-  Users.findById(deleteId).then(user => {
-    if (user.length > 0) {
-      res.status(200).json(user);
 
-      Users.remove(deleteId).catch(err => {
-        res.status(500).json({ error: 'The user could not be removed' });
+  Users.remove(deleteId)
+    .then(user => {
+      res.status(204).json(user);
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: 'There was a problem removing the user from the database'
       });
-    } else {
-      res
-        .status(404)
-        .json({ message: 'The user with the specified ID does not exist.' });
-    }
-  });
+    });
 });
 
 function generateToken(user) {

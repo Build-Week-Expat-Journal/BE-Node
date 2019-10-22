@@ -53,7 +53,8 @@ function findUserPosts(userId) {
 }
 
 function remove(id) {
-  return db('posts')
+  return db('users')
     .where('id', Number(id))
     .del();
+  return findById(id);
 }
