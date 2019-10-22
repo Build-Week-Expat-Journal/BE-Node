@@ -18,6 +18,7 @@ exports.up = function(knex) {
       tbl.string('hiking', 255);
       tbl.string('chess', 255);
     })
+
     .createTable('user_interests', tbl => {
       tbl.increments();
 
