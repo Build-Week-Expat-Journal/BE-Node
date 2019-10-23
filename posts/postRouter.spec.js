@@ -1,5 +1,5 @@
 const server = require('../api/server');
-const user = require('./userRouter');
+
 const request = require('supertest');
 
 /* 1. does it return the correct status code for the input provided?
