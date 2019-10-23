@@ -45,20 +45,6 @@ router.get('/:id/posts', (req, res) => {
     });
 });
 
-router.get('/interests', (req, res) => {
-  console.log(interest);
-  Users.findInterests()
-    .then(interests => {
-      console.log(interests);
-      res.status(200).json(interests);
-    })
-    .catch(err => {
-      res.status(500).json({
-        message: 'there was a problem getting user interests from the databases'
-      });
-    });
-});
-
 router.post('/register', (req, res) => {
   // implement registration
   let user = req.body;
