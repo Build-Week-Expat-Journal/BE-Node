@@ -6,7 +6,7 @@ const router = express.Router();
 const authMiddleware = require('../auth-middleware/authMiddleWare');
 const Users = require('./user_db_helpers.js');
 
-router.get('/', (req, res) => {
+router.get('/', authMiddleware, (req, res) => {
   Users.find()
     .then(users => {
       res.status(200).json({ users });
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', authMiddleware, (req, res) => {
   const id = req.params.id;
   Users.findById(id)
     .then(user => {
@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.get('/:id/posts', (req, res) => {
+router.get('/:id/posts', authMiddleware, (req, res) => {
   Users.findUserPosts(req.params.id)
 
     .then(posts => {
