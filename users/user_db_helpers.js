@@ -15,14 +15,7 @@ function find() {
 }
 
 function findInterests() {
-  return db('interests').select(
-    'id',
-    'photography',
-    'networking',
-    'yoga',
-    'hiking',
-    'chess'
-  );
+  return db('interests');
 }
 
 function findBy(filter) {

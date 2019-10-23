@@ -46,9 +46,11 @@ router.get('/:id/posts', (req, res) => {
 });
 
 router.get('/interests', (req, res) => {
-  Users.findInterests('interests')
-    .then(interest => {
-      res.status(200).json(interest);
+  console.log(interest);
+  Users.findInterests()
+    .then(interests => {
+      console.log(interests);
+      res.status(200).json(interests);
     })
     .catch(err => {
       res.status(500).json({

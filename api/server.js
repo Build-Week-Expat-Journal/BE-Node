@@ -5,11 +5,14 @@ const helmet = require('helmet');
 const postRoutes = require('../posts/postRouter.js'); //imports routes
 const usersRoutes = require('../users/userRouter.js'); //imports routes
 
+const interestsRouter = require('../interests/interestsRouter.js');
+
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
 server.use('/api/posts', postRoutes);
 server.use('/api/users', usersRoutes);
+server.use('/api/interests', interestsRouter);
 
 server.get('/', (req, res) => {
   res.send(
@@ -46,7 +49,7 @@ server.get('/', (req, res) => {
 
     grabs user interests<br/>
     GET:
-    <h4>https://expat-journal-lambda1.herokuapp.com/api/users/interests</h4>
+    <h4>https://expat-journal-lambda1.herokuapp.com/api/interests</h4>
 
     -------
     grabs all posts created<br/>
