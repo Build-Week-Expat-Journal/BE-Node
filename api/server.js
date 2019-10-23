@@ -8,6 +8,7 @@ const usersRoutes = require('../users/userRouter.js'); //imports routes
 const interestsRouter = require('../interests/interestsRouter.js');
 
 const messageRouter = require('../messages/messageRouter.js');
+const userProfileRouter = require('../users_profile/usersProfileRouter.js');
 
 server.use(helmet());
 server.use(cors());
@@ -16,6 +17,7 @@ server.use('/api/posts', postRoutes);
 server.use('/api/users', usersRoutes);
 server.use('/api/interests', interestsRouter);
 server.use('/api/messages', messageRouter);
+server.use('/api/user_profile', userProfileRouter);
 
 server.get('/', (req, res) => {
   res.send(
@@ -33,6 +35,14 @@ server.get('/', (req, res) => {
     GET:
     <h4>
     https://expat-journal-lambda1.herokuapp.com/api/users/:id</h4>
+
+    -------
+
+    
+    grabs user profiles <br/>
+    GET:
+    <h4>
+    https://expat-journal-lambda1.herokuapp.com/api/user_profile</h4>
 
     -------
 
