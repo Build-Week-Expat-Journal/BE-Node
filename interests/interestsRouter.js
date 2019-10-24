@@ -5,7 +5,7 @@ const authMiddleware = require('../auth-middleware/authMiddleWare');
 
 const getInterests = require('./interests_db_helpers.js');
 
-router.get('/', authMiddleware, (req, res) => {
+router.get('/', (req, res) => {
   getInterests.findInterests().then(userInterests => {
     res.status(200).json(userInterests);
   });
