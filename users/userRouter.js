@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:id', authMiddleware, (req, res) => {
+router.get('/:id', (req, res) => {
   const id = req.params.id;
   Users.findById(id)
     .then(user => {
@@ -31,7 +31,7 @@ router.get('/:id', authMiddleware, (req, res) => {
     });
 });
 
-router.get('/:id/posts', authMiddleware, (req, res) => {
+router.get('/:id/posts', (req, res) => {
   Users.findUserPosts(req.params.id)
 
     .then(posts => {
