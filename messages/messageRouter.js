@@ -4,7 +4,7 @@ const router = express.Router();
 const authMiddleware = require('../auth-middleware/authMiddleWare.js');
 const getMessages = require('../messages/message_db_helpers.js');
 
-router.get('/', (req, res) => {
+router.get('/', authMiddleware, (req, res) => {
   getMessages
     .find()
     .then(message => {

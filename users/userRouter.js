@@ -6,7 +6,7 @@ const router = express.Router();
 const authMiddleware = require('../auth-middleware/authMiddleWare');
 const Users = require('./user_db_helpers.js');
 
-router.get('/', (req, res) => {
+router.get('/', authMiddleware, (req, res) => {
   Users.find()
     .then(users => {
       res.status(200).json({ users });
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', authMiddleware, (req, res) => {
   const id = req.params.id;
   Users.findById(id)
     .then(user => {
@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.get('/:id/posts', (req, res) => {
+router.get('/:id/posts', authMiddleware, (req, res) => {
   Users.findUserPosts(req.params.id)
 
     .then(posts => {
@@ -51,12 +51,13 @@ router.post('/register', (req, res) => {
   console.log(user);
   const hash = bcrypt.hashSync(user.password, 10);
   user.password = hash;
-
+  const token = generateToken(user);
   Users.add(user)
     .then(savedUser => {
       console.log(savedUser);
       res.status(201).json({
-        user: savedUser
+        user: savedUser,
+        token
       });
     })
     .catch(error => {
@@ -72,19 +73,13 @@ router.post('/login', (req, res) => {
   Users.findBy({ email, password })
     .first()
     .then(user => {
-      res.status(201).json({ message: `Welcome !` });
-      // if (user && bcrypt.compareSync(password, user.password)) {
-      //   // produce token
-      //   const token = generateToken(user);
-
-      //   // add token to response
-      //   res.status(201).json({
-      //     message: `Welcome ${user.username}!`,
-      //     token
-      //   });
-      // } else {
-      //   res.status(401).json({ message: 'Invalid Credentials' });
-      // }
+      if (user && bcrypt.compareSync(password, user.password)) {
+        res.status(201).json({
+          message: `Welcome ${user.username}!`
+        });
+      } else {
+        res.status(401).json({ message: 'Invalid Credentials' });
+      }
     })
     .catch(error => {
       res.status(500).json(error);

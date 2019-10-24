@@ -10,7 +10,7 @@ const validatePost = require('../auth-middleware/validatePosts.js');
 
 //Returns an array of all the post objects contained in the database.
 //any url that begins  with /api/posts
-router.get('/', (req, res) => {
+router.get('/', authMiddleware, (req, res) => {
   Posts.find()
     .then(post => {
       res.status(200).json(post);
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 
 //any url that begins with /api/posts/:id
 //Returns the post object with the specified id.
-router.get('/:id', (req, res) => {
+router.get('/:id', authMiddleware, (req, res) => {
   const postID = req.params.id;
   Posts.findById(postID)
     .then(post => {
@@ -46,7 +46,7 @@ router.get('/:id', (req, res) => {
 
 //Returns an array of all the comment objects associated with the post with the specified id.
 //any url that begins with /api/posts/:id/comments
-router.get('/:id/comments', (req, res) => {
+router.get('/:id/comments', authMiddleware, (req, res) => {
   const commentID = req.params.id;
   console.log(`from inside of the get request `);
   Posts.findPostComments(commentID)
