@@ -6,7 +6,7 @@ const router = express.Router();
 const authMiddleware = require('../auth-middleware/authMiddleWare');
 const Users = require('./user_db_helpers.js');
 
-router.get('/', authMiddleware, (req, res) => {
+router.get('/', (req, res) => {
   Users.find()
     .then(users => {
       res.status(200).json({ users });
