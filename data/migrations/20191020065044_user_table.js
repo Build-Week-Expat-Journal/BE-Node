@@ -8,7 +8,7 @@ exports.up = function(knex) {
         .unique()
         .notNullable();
       tbl.string('password', 255).notNullable();
-      tbl.string('confirm_password', 255).notNullable();
+      tbl.string('confirmed_password', 255).notNullable();
     })
     .createTable('interests', tbl => {
       tbl.increments();
