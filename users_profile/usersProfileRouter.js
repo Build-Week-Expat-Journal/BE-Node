@@ -5,7 +5,7 @@ const router = express.Router();
 const authMiddleware = require('../auth-middleware/authMiddleWare.js');
 const getUserProfile = require('../users_profile/usersProfile_db_helpers.js');
 
-router.get('/', (req, res) => {
+router.get('/', authMiddleware, (req, res) => {
   getUserProfile
     .find()
     .then(userProfile => {
