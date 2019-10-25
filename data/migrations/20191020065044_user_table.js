@@ -18,10 +18,8 @@ exports.up = function(knex) {
       tbl.string('hiking', 255);
       tbl.string('chess', 255);
     })
-
     .createTable('user_interests', tbl => {
       tbl.increments();
-
       //create FK that references the PK in the users table
       tbl
         .integer('user_id')
@@ -31,7 +29,6 @@ exports.up = function(knex) {
         .inTable('users')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
-
       tbl
         .integer('interest_id')
         .notNullable()
@@ -40,14 +37,13 @@ exports.up = function(knex) {
         .inTable('interests')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
-
       tbl.unique(['user_id', 'interest_id']);
     });
 };
 
 exports.down = function(knex) {
-  return knex.schema
-    .dropTableIfExists('user_interests')
-    .dropTableIfExists('interests')
-    .dropTableIfExists('users');
+  // return knex.schema
+  //   .dropTableIfExists('user_interests')
+  //   .dropTableIfExists('interests')
+  //   .dropTableIfExists('users');
 };
